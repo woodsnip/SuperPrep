@@ -10,13 +10,13 @@ Jonathan Luu
 
 David Cha 
 
-Dev:  
+### Dev:  
 
-### Daniel Grossman 
+Daniel Grossman 
 
-Dev: 
+### Dev: 
 
-### Manuel Gonzalez 
+Manuel Gonzalez 
 
 ## Programming Language 
 
