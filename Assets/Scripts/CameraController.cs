@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
     public float offset = 3f;
-    public float offsetSmoothing = 2f;
+    public float offsetSmoothing = 4f;
     private Vector3 playerPosition;
 
 
@@ -30,6 +30,11 @@ public class CameraController : MonoBehaviour
             playerPosition = new Vector3(playerPosition.x - offset, playerPosition.y, playerPosition.z);
         }
 
+        
+    }
+
+    private void LateUpdate()
+    {
         transform.position = Vector3.Lerp(transform.position, playerPosition, offsetSmoothing * Time.deltaTime);
     }
 }
