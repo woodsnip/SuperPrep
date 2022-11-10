@@ -12,10 +12,15 @@ public class PlayfabManager : MonoBehaviour
     public TMP_Text messageText;
     public TMP_InputField emailInput;
     public TMP_InputField passwordInput;
+    public TMP_InputField passwordCheckInput;
 
     public void RegisterButton() {
         if (passwordInput.text.Length < 6 && passwordInput.text.Length > 0){
             messageText.text="Password too short!";
+            return;
+        }
+        if (passwordInput.text != passwordCheckInput.text){
+            messageText.text="Passwords do not match";
             return;
         }
         var request = new RegisterPlayFabUserRequest {
