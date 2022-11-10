@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DevAccountEmail: savagefellowship3031@gmail.com
   DevAccountToken: 43qt54f4r4i5m3ay3fq59pk56pcjzznemmwxtto9ifu3df7xsf8yqxqdy9w5sbxfaakcthtkkurjaifkqfnygfkcinwoa1pkjjjxt7nboigwdfxqz4wcox9xhjuayfuqnkijntj8ez9d4s3y6dzj36dr7xgwc5rgq6u1mjkfiomyduohd3xsgsqfi8m9x5dxqksjt59u
-  SelectedStudio: 
+  SelectedStudio: My Game Studio
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 
