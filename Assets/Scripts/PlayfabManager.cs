@@ -14,7 +14,7 @@ public class PlayfabManager : MonoBehaviour
     public TMP_InputField passwordInput;
 
     public void RegisterButton() {
-        if (passwordInput.text.Length < 6){
+        if (passwordInput.text.Length < 6 && passwordInput.text.Length > 0){
             messageText.text="Password too short!";
             return;
         }
@@ -29,12 +29,11 @@ public class PlayfabManager : MonoBehaviour
     void OnRegisterSuccess(RegisterPlayFabUserResult result) {
         messageText.text = "Registered and logged in";}
 
-
-
-    //void Start(){
-    //    }
-
     public void LoginButton() {
+        if (passwordInput.text.Length < 6){
+            messageText.text="Password too short!";
+            return;
+        }
         var request = new LoginWithEmailAddressRequest {
             Email = emailInput.text,
             Password = passwordInput.text
@@ -48,7 +47,9 @@ public class PlayfabManager : MonoBehaviour
     
     
     void OnError(PlayFabError error) {
-        messageText.text = error.ErrorMessage;
-        Debug.Log(error.GenerateErrorReport()); }
+        if (passwordInput.text.Length != 0 || emailInput.text.Length != 0){
+            messageText.text = error.ErrorMessage;
+            Debug.Log(error.GenerateErrorReport()); }}
+
 
 }
