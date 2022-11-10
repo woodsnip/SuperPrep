@@ -50,11 +50,21 @@ public class PlayfabManager : MonoBehaviour
         messageText.text = "Logged in!";
         Debug.Log("Sucessful login/account create!");}
     
+    public void ResetPasswordButton() {
+        var request = new SendAccountRecoveryEmailRequest {
+            Email = emailInput.text,
+            TitleId = "F91CF"
+        };
+        PlayFabClientAPI.SendAccountRecoveryEmail(request, OnPasswordReset, OnError);
+    }
+
+    void OnPasswordReset(SendAccountRecoveryEmailResult result){
+        messageText.text = "Password reset mail sent";
+    }
     
     void OnError(PlayFabError error) {
         if (passwordInput.text.Length != 0 || emailInput.text.Length != 0){
             messageText.text = error.ErrorMessage;
             Debug.Log(error.GenerateErrorReport()); }}
-
 
 }
