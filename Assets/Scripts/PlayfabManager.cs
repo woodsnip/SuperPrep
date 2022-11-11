@@ -5,6 +5,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayfabManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayfabManager : MonoBehaviour
     public TMP_InputField emailInput;
     public TMP_InputField passwordInput;
     public TMP_InputField passwordCheckInput;
+    public string NextScene;
 
     public void RegisterButton() {
         if (passwordInput.text.Length < 6 && passwordInput.text.Length > 0){
@@ -32,7 +34,8 @@ public class PlayfabManager : MonoBehaviour
     }
     
     void OnRegisterSuccess(RegisterPlayFabUserResult result) {
-        messageText.text = "Registered and logged in";}
+        messageText.text = "Registered and logged in";
+        SceneManager.LoadScene(NextScene);}
 
     public void LoginButton() {
         if (passwordInput.text.Length < 6){
@@ -48,7 +51,8 @@ public class PlayfabManager : MonoBehaviour
 
     void OnLoginSuccess(LoginResult result) {
         messageText.text = "Logged in!";
-        Debug.Log("Sucessful login/account create!");}
+        Debug.Log("Sucessful login/account create!");
+        SceneManager.LoadScene(NextScene);}
     
     public void ResetPasswordButton() {
         var request = new SendAccountRecoveryEmailRequest {
@@ -66,5 +70,11 @@ public class PlayfabManager : MonoBehaviour
         if (passwordInput.text.Length != 0 || emailInput.text.Length != 0){
             messageText.text = error.ErrorMessage;
             Debug.Log(error.GenerateErrorReport()); }}
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
 
 }
