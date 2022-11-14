@@ -1455,7 +1455,7 @@ MonoBehaviour:
   emailInput: {fileID: 433707582}
   passwordInput: {fileID: 315580948}
   passwordCheckInput: {fileID: 41326759}
-  NextScene: Demo
+  NextScene: Title
 --- !u!1 &1078771430
 GameObject:
   m_ObjectHideFlags: 0
