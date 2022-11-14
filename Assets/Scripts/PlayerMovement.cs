@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mail;
 using UnityEngine;
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.02f, groundLayer);
     }
 
     private void Flip()
