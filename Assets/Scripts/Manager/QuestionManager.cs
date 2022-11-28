@@ -1,42 +1,72 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Random = UnityEngine.Random;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class QuestionManager : MonoBehaviour
 {
-    public List<Question> questionList;
+    public QuestionList myQuestionList;
+    private static List<Question> unansweredQuestions;
+
     public TextAsset textAssetData;
-    public int currentQuestion;
-    public Text QuestionTXT;
-    public GameObject[] answerChoices;
+    public GameObject QuestionPanel;
 
-    [System.Serializable]
-    public class Question
-    {
-        public string question;
-        public string answerChoice1;
-        public string answerChoice2;
-        public string answerChoice3;
-        public string answerChoice4;
-        public string correctAnswer;
-    }
+    public int currentQuestionIndex = 0;
+    private Question currentQuestion;
 
-    [System.Serializable]
-    public class QuestionList
-    {
-        public Question[] questions;
-    }
+    int score = 0;
 
-    public QuestionList myQuestionList = new QuestionList();
+    [SerializeField]
+    private Text QuestionTxt;
+    [SerializeField]
+    private Text buttonTxt1;
+    [SerializeField]
+    private Text buttonTxt2;
+    [SerializeField]
+    private Text buttonTxt3;
+    [SerializeField]
+    private Text buttonTxt4;
+    [SerializeField]
+    private Text AnswerTxt;
 
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
         readCSV();
-        generateQuestion();
+
+        if (unansweredQuestions == null || unansweredQuestions.Count == 0)
+        {
+            unansweredQuestions = myQuestionList.questions.ToList<Question>();
+        }
+
+        GetRandomQuestion();
+    }
+
+    void GetRandomQuestion()
+    {
+        if (unansweredQuestions.Count > 0)
+        {
+            int randomQuestionIndex = Random.Range(0, unansweredQuestions.Count);
+            currentQuestion = unansweredQuestions[randomQuestionIndex];
+
+            QuestionTxt.text = currentQuestion.question;
+            buttonTxt1.text = currentQuestion.answerChoice1;
+            buttonTxt2.text = currentQuestion.answerChoice2;
+            buttonTxt3.text = currentQuestion.answerChoice3;
+            buttonTxt4.text = currentQuestion.answerChoice4;
+
+            String answer = currentQuestion.correctAnswer;
+            String trimAnswer = answer.Trim();
+            AnswerTxt.text = trimAnswer;
+        }
+        else
+        {
+            Debug.Log("Out of questions");
+            QuestionPanel.SetActive(false);
+        }
     }
 
     void readCSV()
@@ -46,7 +76,6 @@ public class QuestionManager : MonoBehaviour
         int tableSize = data.Length / 6 - 1;
 
         myQuestionList.questions = new Question[tableSize];
-
 
         for (int i = 0; i < tableSize; i++)
         {
@@ -60,38 +89,76 @@ public class QuestionManager : MonoBehaviour
         }
     }
 
-    void SetAnswers()
+    public void UserSelectAnswer1()
     {
-
-        for (int i = 0; i < answerChoices.Length; i++)
+        if (buttonTxt1.text.Equals(AnswerTxt.text))
         {
-            if (i == 0)
-            {
-                answerChoices[i].transform.GetChild(0).GetComponent<Text>().text = myQuestionList.questions[currentQuestion].answerChoice1;
-            }
-            else if (i == 1)
-            {
-                answerChoices[i].transform.GetChild(0).GetComponent<Text>().text = myQuestionList.questions[currentQuestion].answerChoice2;
-            }
-            else if (i == 2)
-            {
-                answerChoices[i].transform.GetChild(0).GetComponent<Text>().text = myQuestionList.questions[currentQuestion].answerChoice3;
-            }
-            else if (i == 3)
-            {
-                answerChoices[i].transform.GetChild(0).GetComponent<Text>().text = myQuestionList.questions[currentQuestion].answerChoice4;
-            }
+            Debug.Log("Correct");
+            correct();
+        }
+        else
+        {
+            Debug.Log("Wrong");
+            wrong();
+        }
+
+        GetRandomQuestion();
+    }
+
+    public void UserSelectAnswer2()
+    {
+        if (buttonTxt2.text.Equals(AnswerTxt.text))
+        {
+            Debug.Log("Correct");
+            correct();
+        }
+        else
+        {
+            Debug.Log("Wrong");
+            wrong();
         }
     }
 
-
-    public void generateQuestion()
+    public void UserSelectAnswer3()
     {
-        currentQuestion = Random.Range(0, myQuestionList.questions.Length);
-        QuestionTXT.text = myQuestionList.questions[currentQuestion].question;
-        SetAnswers();
+        if (buttonTxt3.text.Equals(AnswerTxt.text))
+        {
+            Debug.Log("Correct");
+            correct();
+        }
+        else
+        {
+            Debug.Log("Wrong");
+            wrong();
+        }
     }
 
+    public void UserSelectAnswer4()
+    {
+        if (buttonTxt4.text.Equals(AnswerTxt.text))
+        {
+            Debug.Log("Correct");
+            correct();
+        }
+        else
+        {
+            Debug.Log("Wrong");
+            wrong();
+        }
+    }
 
+    public void correct()
+    {
+        score += 1;
+        Debug.Log(score);
+        unansweredQuestions.Remove(currentQuestion);
+        GetRandomQuestion();
+    }
 
+    public void wrong()
+    {
+        Debug.Log(score);
+        unansweredQuestions.Remove(currentQuestion);
+        GetRandomQuestion();
+    }
 }
