@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     bool isFacingRight = true;
 
     public GameObject QuestionBoxUI;
+    public GameObject GameOverUI;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -62,6 +63,17 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "QuestionTrigger")
         {
             QuestionBoxUI.SetActive(true);
+            Time.timeScale = 0f;
+            Destroy(other.gameObject);
+            DontDestroyOnLoad(other.gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Obstacle"))
+        {
+            GameOverUI.SetActive(true);
             Time.timeScale = 0f;
             Destroy(other.gameObject);
             DontDestroyOnLoad(other.gameObject);
