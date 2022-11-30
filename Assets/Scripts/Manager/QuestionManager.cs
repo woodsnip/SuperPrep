@@ -66,6 +66,7 @@ public class QuestionManager : MonoBehaviour
         {
             Debug.Log("Out of questions");
             QuestionPanel.SetActive(false);
+            Time.timeScale = 1f;
         }
     }
 

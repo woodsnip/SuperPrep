@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private float jumpSpeed = 16f;
     bool isFacingRight = true;
 
+    public GameObject QuestionBoxUI;
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -52,6 +54,17 @@ public class PlayerMovement : MonoBehaviour
             Vector2 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "QuestionTrigger")
+        {
+            QuestionBoxUI.SetActive(true);
+            Time.timeScale = 0f;
+            Destroy(other.gameObject);
+            DontDestroyOnLoad(other.gameObject);
         }
     }
 }
