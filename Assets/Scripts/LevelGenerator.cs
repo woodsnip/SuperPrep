@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -11,14 +13,34 @@ public class LevelGenerator : MonoBehaviour
     public GameObject player;
     private Vector3 lastEndPosition;
     private Vector3 spawnOffset = new Vector3(11f, 1f, 0);
+    float x,y,z;
 
     private void Awake()
     {
-        lastEndPosition = levelStart.Find("EndPosition").position;
-        SpawnLevel();
-        SpawnLevel();
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnDataReceived, OnError);
     }
 
+    void OnDataReceived(GetUserDataResult result) {
+        Debug.Log("Data received");
+        if (result.Data != null && result.Data.ContainsKey("x") && result.Data.ContainsKey("y") && result.Data.ContainsKey("z")){
+            x = float.Parse(result.Data["x"].Value);
+            y = float.Parse(result.Data["y"].Value);
+            z = float.Parse(result.Data["z"].Value);
+        
+            Vector3 loadPosition = new Vector3(x,y,z);
+            lastEndPosition =  loadPosition;
+            SpawnLevel();
+            SpawnLevel();
+            Debug.Log("Successful");
+        }
+        else {
+            Debug.Log("Unsucessful");
+        }
+    }
+
+    void OnError(PlayFabError error){
+        Debug.Log("Unsuccessful");
+        }
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +56,7 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    
     private void SpawnLevel()
     {
         Transform lastLevelPartTransform = SpawnLevelPart(lastEndPosition);
