@@ -17,7 +17,8 @@ public class QuestionManager : MonoBehaviour
     public int currentQuestionIndex = 0;
     private Question currentQuestion;
 
-    int score = 0;
+    public GameObject solutionBox;
+    public Text solution;
 
     [SerializeField]
     private Text QuestionTxt;
@@ -35,6 +36,7 @@ public class QuestionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        solutionBox.SetActive(false);
         readCSV();
 
         if (unansweredQuestions == null || unansweredQuestions.Count == 0)
@@ -102,8 +104,6 @@ public class QuestionManager : MonoBehaviour
             Debug.Log("Wrong");
             wrong();
         }
-
-        GetRandomQuestion();
     }
 
     public void UserSelectAnswer2()
@@ -148,18 +148,24 @@ public class QuestionManager : MonoBehaviour
         }
     }
 
+    public void SolutionTransition()
+    {
+        solutionBox.SetActive(false);
+        GetRandomQuestion();
+    }
+
     public void correct()
     {
-        score += 1;
-        Debug.Log(score);
+        ScoreManager.instance.AddPoint();
         unansweredQuestions.Remove(currentQuestion);
-        GetRandomQuestion();
+        solutionBox.SetActive(true);
+        solution.text = "Correct Answer: " + AnswerTxt.text;
     }
 
     public void wrong()
     {
-        Debug.Log(score);
         unansweredQuestions.Remove(currentQuestion);
-        GetRandomQuestion();
+        solutionBox.SetActive(true);
+        solution.text = "Correct Answer: " + AnswerTxt.text;
     }
 }

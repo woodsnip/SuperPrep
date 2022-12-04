@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.collider.CompareTag("Obstacle"))
         {
+            ScoreManager.instance.AddScoreToList();
             GameOverUI.SetActive(true);
             Time.timeScale = 0f;
             Destroy(other.gameObject);
