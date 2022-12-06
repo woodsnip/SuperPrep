@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using Random = UnityEngine.Random;
 
 public class QuestionManager : MonoBehaviour
@@ -17,7 +18,9 @@ public class QuestionManager : MonoBehaviour
     public int currentQuestionIndex = 0;
     private Question currentQuestion;
 
-    int score = 0;
+    public TextMeshProUGUI scoreText;
+    private int score = 0;
+    private int questionsAnswered = 0;
 
     [SerializeField]
     private Text QuestionTxt;
@@ -43,6 +46,7 @@ public class QuestionManager : MonoBehaviour
         }
 
         GetRandomQuestion();
+        scoreText.text = "Score: " + score + "/" + questionsAnswered;
     }
 
     void GetRandomQuestion()
@@ -151,14 +155,18 @@ public class QuestionManager : MonoBehaviour
     public void correct()
     {
         score += 1;
+        questionsAnswered += 1;
         Debug.Log(score);
+        scoreText.text = "Score: " + score + "/" + questionsAnswered;
         unansweredQuestions.Remove(currentQuestion);
         GetRandomQuestion();
     }
 
     public void wrong()
     {
+        questionsAnswered += 1;
         Debug.Log(score);
+        scoreText.text = "Score: " + score + "/" + questionsAnswered;
         unansweredQuestions.Remove(currentQuestion);
         GetRandomQuestion();
     }
