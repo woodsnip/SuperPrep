@@ -3596,7 +3596,7 @@ MonoBehaviour:
   currentQuestionIndex: 0
   solutionBox: {fileID: 699590137}
   solution: {fileID: 1605928}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 640721379}
   QuestionTxt: {fileID: 1858255477}
   buttonTxt1: {fileID: 1781557521}
   buttonTxt2: {fileID: 1720193843}
