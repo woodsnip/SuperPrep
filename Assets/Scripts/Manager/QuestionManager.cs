@@ -74,7 +74,11 @@ public class QuestionManager : MonoBehaviour
 
     void readCSV()
     {
+        // string pattern = '(?:^|,)(?=[^"]|(")?)"?((?(1)(?:[^"]|"")*|[^,"]*))"?(?=,|$)';
+        // Regex regex = new Regex(pattern)
+        // string[] data = textAssetData.text.Split(pattern);
         string[] data = textAssetData.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        // (?:^|,)(?=[^"]|(")?)"?((?(1)(?:[^"]|"")*|[^,"]*))"?(?=,|$)
 
         int tableSize = data.Length / 6 - 1;
 

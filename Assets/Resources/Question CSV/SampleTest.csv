@@ -1,11 +1,19 @@
 ﻿Questions,AnswerChoice1,AnswerChoice2,AnswerChoice3,AnswerChoice4,CorrectAnswer
-Test Question1,A) Answer1,B) Answer2,C) Answer3,D) Answer4,D) Answer4
-Test Question2,A) Answer1,B) Answer2,C) Answer3,D) Answer4,D) Answer4
-Test Question3,A) Answer1,B) Answer2,C) Answer3,D) Answer4,C) Answer3
-Test Question4,A) Answer1,B) Answer2,C) Answer3,D) Answer4,C) Answer3
-Test Question5,A) Answer1,B) Answer2,C) Answer3,D) Answer4,B) Answer2
-Test Question6,A) Answer1,B) Answer2,C) Answer3,D) Answer4,B) Answer2
-Test Question7,A) Answer1,B) Answer2,C) Answer3,D) Answer4,A) Answer1
-Test Question8,A) Answer1,B) Answer2,C) Answer3,D) Answer4,A) Answer1
-Test Question9,A) Answer1,B) Answer2,C) Answer3,D) Answer4,B) Answer2
-Test Question10,A) Answer1,B) Answer2,C) Answer3,D) Answer4,B) Answer2
+A car traveled at an average speed of 80 miles per hour for 3 hours and consumed fuel at a rate of 34 miles per gallon. Approximately how many gallons of fuel did the car use for the entire 3-hour trip?,A) 2,B) 3,C) 6,D) 7,D) 7
+Which of the following is equivalent to (s - t)(s/t)?,A) (s/t) - s,B) (s/t) - st,C) (s^2/t) - s,D) (s^2/t) - (s/t^2),C) (s^2/t) - s
+Which of the following is an equivalent form of the expression 15x + 24ax ?,A) 39ax^2,B) 39(a + 2x),C) (5 + 8a) x,D) (15 + 24a) x,D) (15 + 24a) x
+Which of the following is a solution to the equation 2x^2 + 4x = 3 + 3x^2?,A) −1,B) 0,C) 3,D) 6,C) 3
+According to the Department of Agriculture consuming 100 grams of banana provides 0.15 milligram of zinc. Which of the following is closest to the number of milligrams of zinc provided by 140 grams of banana?,A) 0.15,B) 0.21,C) 0.25,D) 0.93,B) 0.21
+An artist is creating a sculpture using bendable metal rods of equal length. One rod is formed into the shape of a square and another rod into the shape of an equilateral triangle. If each side of the triangle is 2 inches longer than each side of the square how long in inches is each rod?,A) 16,B) 18,C) 24,D) 30,C) 24
+Liquid going through a cooling system is chilled so that its temperature decreases at a constant rate from 100°C to 25°C in 5 seconds. Which of the following functions represents the temperature C in degrees Celsius as a function of the time t in seconds after chilling began for 0 ≤ t ≤ 5 ?,A) C = −25 + 15t,B) C = 25 − 15t,C) C = 25 + 15t,D) C = 100 − 15t,D) C = 100 − 15t
+V = (4/3)pi*r^2; The formula for the volume of a sphere with radius r is shown above. The radius of the planet Jupiter is about 11 times the radius of planet Earth. Assuming that planets are spheres about how many times larger is the volume of Jupiter than the volume of Earth?,A) 11,B) 121,C) 1331,D) 1775,C) 1331
+The population of squirrels in a park has been doubling every 15 years. Which of the following statements describes the type of function that best models the relationship between the population of squirrels in the park and the number of 15-year time periods?,A) Exponential growth because the population of squirrels is increasing by the same amount each 15-year time period,"B) Exponential growth because the population of
+squirrels is increasing by the same percentage
+each 15-year time period","C) Linear growth because the population of
+squirrels is increasing by the same amount each
+15-year time period","D) Linear growth because the population of
+squirrels is increasing by the same percentage
+each 15-year time period","B) Exponential growth because the population of
+squirrels is increasing by the same percentage
+each 15-year time period"
+A high school basketball team won exactly 65 percent of the games it played during last season. Which of the following could be the total number of games the team played last season?,A) 22,B) 20,C) 18,D) 14,B) 20
