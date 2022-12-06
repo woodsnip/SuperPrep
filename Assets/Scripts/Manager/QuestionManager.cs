@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class QuestionManager : MonoBehaviour
 
     public GameObject solutionBox;
     public Text solution;
+
+    public TextMeshProUGUI scoreText;
+    private int playerScore = 0;
+    private int questionsAnswered = 0;
 
     [SerializeField]
     private Text QuestionTxt;
@@ -44,6 +49,7 @@ public class QuestionManager : MonoBehaviour
             unansweredQuestions = myQuestionList.questions.ToList<Question>();
         }
 
+        scoreText.text = "Score: " + playerScore + "/" + questionsAnswered;
         GetRandomQuestion();
     }
 
@@ -164,6 +170,9 @@ public class QuestionManager : MonoBehaviour
         unansweredQuestions.Remove(currentQuestion);
         solutionBox.SetActive(true);
         solution.text = "Correct Answer: " + AnswerTxt.text;
+        playerScore += 1;
+        questionsAnswered += 1;
+        scoreText.text = "Score: " + playerScore + "/" + questionsAnswered;
     }
 
     public void wrong()
@@ -171,5 +180,7 @@ public class QuestionManager : MonoBehaviour
         unansweredQuestions.Remove(currentQuestion);
         solutionBox.SetActive(true);
         solution.text = "Correct Answer: " + AnswerTxt.text;
+        questionsAnswered += 1;
+        scoreText.text = "Score: " + playerScore + "/" + questionsAnswered;
     }
 }
